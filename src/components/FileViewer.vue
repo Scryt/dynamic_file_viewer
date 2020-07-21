@@ -1,14 +1,21 @@
 <template>
-  <div></div>
+  <div>
+    <pdf :src="filePath"></pdf>
+    <p>{{ filePath }}</p>
+  </div>
 </template>
 
 <script>
-export default {
-  name: 'FileViewer',
-  props: {
-  }
-}
-</script>
+  import pdf from 'vue-pdf'
 
-<style scoped>
-</style>
+  export default {
+    name: "FileViewer",
+    props: ['filePath'],
+    components: {
+      pdf
+    },
+    methods: {
+
+    }
+  }
+</script>
