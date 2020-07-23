@@ -1,7 +1,14 @@
 <template>
     <div id="app">
-            <FileUpload @fileUpload='onFileUpload' v-if='!fileProvided'/>
-            <FileViewer v-else :filePath=filePath></FileViewer>
+            <FileUpload
+                    @fileUpload='onFileUpload'
+                    v-if='!fileProvided'
+            />
+            <FileViewer
+                    @fileUpload='fileProvided = false'
+                    :filePath=filePath
+                    v-else
+            />
     </div>
 </template>
 
@@ -31,3 +38,9 @@
         }
     };
 </script>
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+</style>
