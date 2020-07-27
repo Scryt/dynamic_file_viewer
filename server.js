@@ -1,6 +1,7 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
+const fs = require('fs')
 const app = express();
 
 app.use(express.static('public')); //to access the files in public folder
@@ -11,18 +12,19 @@ app.post('/upload', (req, res) => {
     if (!req.files) {
         return res.status(500).send({ msg: "file is not found" })
     }
-    // accessing the file
-    const myFile = req.files.file;
 
-    //  mv() method places the file inside public directory
-    myFile.mv(`${__dirname}/public/files/${myFile.name}`, function (err) {
-        if (err) {
-            console.log(err)
-            return res.status(500).send({ msg: "Error occured" });
-        }
-        // returing the response with file path and name
-        return res.send({name: myFile.name, path: `/${myFile.name}`});
-    });
+    const myFile = req.files.file;
+    // TODO: if file exists upload/update the file instead of skiping
+    if( !fs.existsSync(`${__dirname}/public/files/${myFile.name}`)) {
+        myFile.mv(`${__dirname}/public/files/${myFile.name}`, function (err) {
+            if (err) {
+                console.log(err)
+                return res.status(500).send({ msg: "Error occured" });
+            }
+        });
+    }
+
+    return res.send({name: myFile.name, path: `/${myFile.name}`});
 })
 
 require('dotenv').config({path: __dirname + '/.env'})

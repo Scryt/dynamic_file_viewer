@@ -1,8 +1,10 @@
 <template>
-    <div>
-        <input type="file" @change="onFileChange" />
-        <button @click="onUploadFile" class="upload-button"
+    <div class="container">
+        <div id="file-upload">
+            <input type="file" @change="onFileChange" />
+            <button @click="onUploadFile" class="upload-button"
                 :disabled="!this.selectedFile">Upload file</button>
+        </div>
     </div>
 </template>
 
@@ -43,6 +45,3 @@
         }
     };
 </script>
-
-<style scoped>
-</style>

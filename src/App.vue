@@ -5,6 +5,7 @@
                     v-if='!fileProvided'
             />
             <FileViewer
+                    @returnToFileUpload="fileProvided = false"
                     @fileUpload='fileProvided = false'
                     :filePath=filePath
                     v-else
@@ -38,9 +39,3 @@
         }
     };
 </script>
-<style>
-    body {
-        padding: 0;
-        margin: 0;
-    }
-</style>
