@@ -4,20 +4,19 @@
 ```
 npm install
 ```
+Requires .env file:
+For easy startup create .env file in project directiory with given data inside:
 
-### Compiles and hot-reloads for development
 ```
+PORT=8080
+HOST=127.0.0.1
+VUE_APP_API_ROOT=http://localhost:8080
+```
+
+### Star server / vue instanace
+```
+npm start server.js
 npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
